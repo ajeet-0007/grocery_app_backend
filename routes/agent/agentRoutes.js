@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const {agentSignUp} = require('../../controllers/agent/agentSignUp')
+const { agentSignUp, agentLogIn } = require("../../controllers/agent/agentSignUp");
 
-router.post('/sign-up', agentSignUp);
+router.post("/sign-up", agentSignUp);
 
+router.post('/log-in', agentLogIn)
 
 module.exports = router;
