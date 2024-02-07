@@ -11,6 +11,16 @@ exports.agentSignUp = async (req, res, next) => {
             agent_phone_number,
             agent_password,
         } = req.body
+        const checkAgentExistInDatabase = await db.sequelize.query(
+            'EXEC GetAgentPassword :agent_email',
+            {
+                replacements: {
+                    agent_email: agent_email,
+                },
+                type: db.sequelize.QueryTypes.SELECT,
+            }
+        )
+        if(checkAgentExistInDatabase.length === 0){
         const agent_hashed_password = await bcrypt.hash(agent_password, 10)
         const agent_id = Math.ceil(Math.random() * 100)
         const data = await db.sequelize.query(
@@ -36,6 +46,13 @@ exports.agentSignUp = async (req, res, next) => {
                 success: false,
             })
         }
+    }else{
+        return res.status(200).json({
+            message: "Agent Already Exist",
+            error: false,
+            success: true
+        })
+    }
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -49,6 +66,7 @@ exports.agentSignUp = async (req, res, next) => {
 exports.agentLogIn = async (req, res, next) => {
     try {
         const { agent_email, agent_password } = req.body
+        
         const data = await db.sequelize.query(
             'EXEC GetAgentPassword :agent_email',
             {
@@ -58,6 +76,7 @@ exports.agentLogIn = async (req, res, next) => {
                 type: db.sequelize.QueryTypes.SELECT,
             }
         )
+        if(data.length !==0){
         const passwordMatched = await bcrypt.compare(
             agent_password,
             data[0].agent_password
@@ -71,13 +90,22 @@ exports.agentLogIn = async (req, res, next) => {
                 message: 'Login Successfull',
                 accessToken: accessToken,
                 error: false,
+                success: true
             })
         } else {
             return res.status(200).json({
                 message: 'Invalid Email or Password',
                 error: false,
+                success: true
             })
         }
+    }else{
+        return res.status(200).json({
+            message: "Agent does not exist",
+            error: false,
+            success: true
+        })
+    }
     } catch (error) {
         console.log(error)
         return res.status(500).json({
