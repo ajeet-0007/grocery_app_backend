@@ -6,14 +6,13 @@ const jwt = require('jsonwebtoken')
 exports.agentSignUp = async (req, res, next) => {
     try {
         const {
-            agent_id,
             agent_name,
             agent_email,
             agent_phone_number,
             agent_password,
         } = req.body
         const agent_hashed_password = await bcrypt.hash(agent_password, 10)
-        console.log(agent_hashed_password)
+        const agent_id = Math.ceil(Math.random() * 100)
         const data = await db.sequelize.query(
             'EXEC InsertAgent :agent_id, :agent_name, :agent_email, :agent_phone_number, :agent_password',
             {
@@ -59,17 +58,13 @@ exports.agentLogIn = async (req, res, next) => {
                 type: db.sequelize.QueryTypes.SELECT,
             }
         )
-        console.log(agent_password)
-        let d = data[0].agent_password
         const passwordMatched = await bcrypt.compare(
             agent_password,
-            d
+            data[0].agent_password
         )
-          console.log(data)
-        console.log(passwordMatched)
         if (passwordMatched) {
             const accessToken = jwt.sign(
-                { agent_email: agent_email },
+                { agent_id: data[0].agent_id },
                 process.env.AGENT_SECRET_KEY
             )
             return res.status(201).json({

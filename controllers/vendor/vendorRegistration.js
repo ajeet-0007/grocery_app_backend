@@ -13,8 +13,9 @@ exports.vendorRegistration = async (req, res, next) => {
             vendor_state,
             vendor_country,
             vendor_shop_pic,
-            agent_id,
         } = req.body
+
+        const { agent_id } = req.user
 
         const vendor_id = Math.ceil(Math.random() * 100)
 
