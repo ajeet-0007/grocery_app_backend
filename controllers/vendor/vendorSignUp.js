@@ -11,7 +11,7 @@ exports.vendorSignUp = async (req, res, next) => {
             },
             type: db.sequelize.QueryTypes.SELECT,
         })
-        if(checkVendorExistOrNot.length === 0){
+        if(checkVendorExistOrNot[0].vendor_password === null){
         const data = await db.sequelize.query(
             'DECLARE @result INT; EXEC CheckVendorShopId :vendor_shop_id, @result OUTPUT; SELECT @result as result;',
             {

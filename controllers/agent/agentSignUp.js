@@ -11,7 +11,7 @@ exports.agentSignUp = async (req, res, next) => {
             agent_phone_number,
             agent_password,
         } = req.body
-        const checkAgentExistInDatabase = await db.sequelize.query(
+        const checkAgentExistOrNot = await db.sequelize.query(
             'EXEC GetAgentPassword :agent_email',
             {
                 replacements: {
@@ -20,7 +20,9 @@ exports.agentSignUp = async (req, res, next) => {
                 type: db.sequelize.QueryTypes.SELECT,
             }
         )
-        if(checkAgentExistInDatabase.length === 0){
+
+        console.log(checkAgentExistOrNot);
+        if(checkAgentExistOrNot.length === 0){
         const agent_hashed_password = await bcrypt.hash(agent_password, 10)
         const agent_id = Math.ceil(Math.random() * 100)
         const data = await db.sequelize.query(
@@ -37,7 +39,7 @@ exports.agentSignUp = async (req, res, next) => {
         )
         if (data[1] === 1) {
             return res.status(201).json({
-                message: 'User SignUp Successfull',
+                message: 'Agent SignUp Successfull',
                 success: true,
             })
         } else {

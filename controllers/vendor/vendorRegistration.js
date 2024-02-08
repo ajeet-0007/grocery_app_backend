@@ -17,6 +17,8 @@ exports.vendorRegistration = async (req, res, next) => {
 
         const { agent_id } = req.user
 
+        
+
         const vendor_id = Math.ceil(Math.random() * 100)
 
         const data = await db.sequelize.query(
