@@ -42,6 +42,17 @@ exports.vendorSignUp = async (req, res, next) => {
                     }
                 )
 
+                const getAllProductId = await db.sequelize.query('EXEC GetAllProductIDs');
+
+                getAllProductId[0].forEach(async (product)=>{
+                            await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
+                                replacements: {
+                                    ShopID: vendor_shop_id,
+                                    ProductID: product.ProductID
+                                }
+                            })
+                })
+
                 if(passwordUpdationforVendor[1]===1){
                     return res.status(200).json({
                         message: "Vendor SignUp SuccessFull",
@@ -49,82 +60,6 @@ exports.vendorSignUp = async (req, res, next) => {
                         success: true
                     })
                 }
-
-                // if (passwordUpdationforVendor[1] === 1) {
-                //     const productDataPath = path.join(
-                //         __dirname,
-                //         '..',
-                //         '..',
-                //         'public',
-                //         'productsJson.json'
-                //     )
-                //     let productDataJson = fs.readFileSync(
-                //         productDataPath,
-                //         'utf-8'
-                //     )
-                //     productDataJson = JSON.parse(productDataJson)
-                //     productDataJson = JSON.stringify(productDataJson)
-                //     console.log(productDataJson)
-                //     const result = await db.sequelize.query(
-                //         'DECLARE @Success INT;EXEC BulkInsertProducts :JsonData, @Success OUTPUT; Select @Success as Success',
-                //         {
-                //             replacements: {
-                //                 JsonData: productDataJson,
-                                
-                //             },
-                //         }
-                //     )
-                //     console.log('eeee', result, result[0][0].Success)
-                //     // if (result[0][0].Success === 1) {
-                //     //     const getAllProductId = await db.sequelize.query('EXEC GetAllProductIDs');
-
-                //     //     getAllProductId[0].forEach(async (product)=>{
-                //     //         await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
-                //     //             replacements: {
-                //     //                 ShopID: vendor_shop_id,
-                //     //                 ProductID: product.ProductID
-                //     //             }
-                //     //         })
-                //     //     })
-                //     //     const productVariantPath = path.join(
-                //     //         __dirname,
-                //     //         '..',
-                //     //         '..',
-                //     //         'public',
-                //     //         'productVariantsJson.json'
-                //     //     )
-                //     //     let productVariantJsonData = fs.readFileSync(
-                //     //         productVariantPath,
-                //     //         'utf-8'
-                //     //     )
-                //     //     productVariantJsonData = JSON.parse(
-                //     //         productVariantJsonData
-                //     //     )
-                //     //     productVariantJsonData = JSON.stringify(
-                //     //         productVariantJsonData
-                //     //     )
-                //     //     getAllProductId[0].forEach(async (product)=>{
-                //     //         await db.sequelize.query("EXEC InsertProductVariant :ProductID, :VariantName, :VariantPrice, :VariantImage")
-                //     //     })
-                //     //     const productVariantUploadData =
-                //     //         await db.sequelize.query(
-                //     //             'DECLARE @Success INT;EXEC BulkInsertProductVariants :JsonData, @Success OUTPUT; Select @Success as Success',
-                //     //             {
-                //     //                 replacements: {
-                //     //                     JsonData: productVariantJsonData,
-                //     //                 },
-                //     //             }
-                //     //         )
-                //     //     console.log(productVariantUploadData);
-                //     //     if (productVariantUploadData[0][0].Success === 1) {
-                //     //         return res.status(201).json({
-                //     //             message: 'Vendor Sign-Up Successfull',
-                //     //             error: false,
-                //     //             success: true,
-                //     //         })
-                //     //     }
-                //     // }
-                // }
             }
         } else {
             return res.status(200).json({

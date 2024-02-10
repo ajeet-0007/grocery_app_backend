@@ -1,132 +1,243 @@
 [
     {
-        
-        "VariantName": "Large Loaf",
-        "VariantPrice": 5.99,
-        "VariantImage": "https://example.com/images/bread1_large.jpg"
+      "ProductID": 1,
+      "VariantName": "Organic Whole Grain Bread",
+      "VariantPrice": 5.99,
+      "VariantImage": "https://example.com/images/bread1.jpg"
     },
     {
-     
-        "VariantName": "Small Loaf",
-        "VariantPrice": 3.99,
-        "VariantImage": "https://example.com/images/bread1_small.jpg"
+      "ProductID": 2,
+      "VariantName": "Fresh Apples",
+      "VariantPrice": 3.49,
+      "VariantImage": "https://example.com/images/apples.jpg"
     },
     {
-      
-
-        "VariantName": "Red Apples",
-        "VariantPrice": 2.99,
-        "VariantImage": "https://example.com/images/apples_red.jpg"
+      "ProductID": 3,
+      "VariantName": "Organic Spinach",
+      "VariantPrice": 2.99,
+      "VariantImage": "https://example.com/images/spinach.jpg"
     },
     {
-       
-
-        "VariantName": "Green Apples",
-        "VariantPrice": 3.49,
-        "VariantImage": "https://example.com/images/apples_green.jpg"
+      "ProductID": 4,
+      "VariantName": "Free-Range Eggs",
+      "VariantPrice": 4.99,
+      "VariantImage": "https://example.com/images/eggs.jpg"
     },
     {
-      
-
-        "VariantName": "Large Bag",
-        "VariantPrice": 4.99,
-        "VariantImage": "https://example.com/images/spinach_large.jpg"
+      "ProductID": 5,
+      "VariantName": "Whole Grain Pasta",
+      "VariantPrice": 3.79,
+      "VariantImage": "https://example.com/images/pasta.jpg"
     },
     {
-    
-
-        "VariantName": "Small Bag",
-        "VariantPrice": 2.99,
-        "VariantImage": "https://example.com/images/spinach_small.jpg"
+      "ProductID": 6,
+      "VariantName": "Organic Milk",
+      "VariantPrice": 4.49,
+      "VariantImage": "https://example.com/images/milk.jpg"
     },
     {
-     
-
-        "VariantName": "Dozen",
-        "VariantPrice": 3.99,
-        "VariantImage": "https://example.com/images/eggs_dozen.jpg"
+      "ProductID": 7,
+      "VariantName": "Grass-Fed Beef",
+      "VariantPrice": 9.99,
+      "VariantImage": "https://example.com/images/beef.jpg"
     },
     {
-    
-
-        "VariantName": "Half-Dozen",
-        "VariantPrice": 2.49,
-        "VariantImage": "https://example.com/images/eggs_half_dozen.jpg"
+      "ProductID": 8,
+      "VariantName": "Organic Bananas",
+      "VariantPrice": 1.99,
+      "VariantImage": "https://example.com/images/bananas.jpg"
     },
     {
-    
-
-        "VariantName": "Spaghetti",
-        "VariantPrice": 2.99,
-        "VariantImage": "https://example.com/images/pasta_spaghetti.jpg"
+      "ProductID": 9,
+      "VariantName": "Organic Tomatoes",
+      "VariantPrice": 2.49,
+      "VariantImage": "https://example.com/images/tomatoes.jpg"
     },
     {
-    
-
-        "VariantName": "Penne",
-        "VariantPrice": 2.49,
-        "VariantImage": "https://example.com/images/pasta_penne.jpg"
+      "ProductID": 10,
+      "VariantName": "Natural Peanut Butter",
+      "VariantPrice": 3.29,
+      "VariantImage": "https://example.com/images/peanut_butter.jpg"
     },
     {
-     
-
-        "VariantName": "Gallon",
-        "VariantPrice": 4.99,
-        "VariantImage": "https://example.com/images/milk_gallon.jpg"
+      "ProductID": 1,
+      "VariantName": "Organic Kale",
+      "VariantPrice": 2.79,
+      "VariantImage": "https://example.com/images/kale.jpg"
     },
     {
-
-
-        "VariantName": "Half-Gallon",
-        "VariantPrice": 2.99,
-        "VariantImage": "https://example.com/images/milk_half_gallon.jpg"
+      "ProductID": 2,
+      "VariantName": "Wild-Caught Salmon",
+      "VariantPrice": 12.99,
+      "VariantImage": "https://example.com/images/salmon.jpg"
     },
     {
-   
-        "VariantName": "Ribeye Steak",
-        "VariantPrice": 9.99,
-        "VariantImage": "https://example.com/images/beef_ribeye.jpg"
+      "ProductID": 3,
+      "VariantName": "Organic Black Beans",
+      "VariantPrice": 1.99,
+      "VariantImage": "https://example.com/images/black_beans.jpg"
     },
     {
-    
-
-        "VariantName": "Ground Beef",
-        "VariantPrice": 6.99,
-        "VariantImage": "https://example.com/images/beef_ground.jpg"
+      "ProductID": 4,
+      "VariantName": "Quinoa",
+      "VariantPrice": 6.99,
+      "VariantImage": "https://example.com/images/quinoa.jpg"
     },
     {
-
-
-        "VariantName": "Bunch",
-        "VariantPrice": 1.99,
-        "VariantImage": "https://example.com/images/bananas_bunch.jpg"
+      "ProductID": 5,
+      "VariantName": "Organic Strawberries",
+      "VariantPrice": 4.99,
+      "VariantImage": "https://example.com/images/strawberries.jpg"
     },
     {
-    
-
-        "VariantName": "Pound",
-        "VariantPrice": 2.49,
-        "VariantImage": "https://example.com/images/tomatoes_pound.jpg"
+      "ProductID": 6,
+      "VariantName": "Almond Milk",
+      "VariantPrice": 3.49,
+      "VariantImage": "https://example.com/images/almond_milk.jpg"
     },
     {
-     
-
-        "VariantName": "Basket",
-        "VariantPrice": 8.99,
-        "VariantImage": "https://example.com/images/tomatoes_basket.jpg"
+      "ProductID": 7,
+      "VariantName": "Whole Grain Bread",
+      "VariantPrice": 4.99,
+      "VariantImage": "https://example.com/images/whole_grain_bread.jpg"
     },
     {
-    
-
-        "VariantName": "16 oz Jar",
-        "VariantPrice": 4.99,
-        "VariantImage": "https://example.com/images/peanut_butter_16oz.jpg"
+      "ProductID": 8,
+      "VariantName": "Organic Broccoli",
+      "VariantPrice": 2.99,
+      "VariantImage": "https://example.com/images/broccoli.jpg"
     },
     {
- 
-
-        "VariantName": "32 oz Jar",
-        "VariantPrice": 8.99,
-        "VariantImage": "https://example.com/images/peanut_butter_32oz.jpg"
+      "ProductID": 9,
+      "VariantName": "Honey",
+      "VariantPrice": 7.99,
+      "VariantImage": "https://example.com/images/honey.jpg"
+    },
+    {
+      "ProductID": 10,
+      "VariantName": "Organic Carrots",
+      "VariantPrice": 1.49,
+      "VariantImage": "https://example.com/images/carrots.jpg"
+    },
+    {
+      "ProductID": 1,
+      "VariantName": "Organic Yogurt",
+      "VariantPrice": 3.99,
+      "VariantImage": "https://example.com/images/yogurt.jpg"
+    },
+    {
+      "ProductID": 2,
+      "VariantName": "Organic Oats",
+      "VariantPrice": 5.49,
+      "VariantImage": "https://example.com/images/oats.jpg"
+    },
+    {
+      "ProductID": 3,
+      "VariantName": "Extra Virgin Olive Oil",
+      "VariantPrice": 9.99,
+      "VariantImage": "https://example.com/images/olive_oil.jpg"
+    },
+    {
+      "ProductID": 4,
+      "VariantName": "Organic Garlic",
+      "VariantPrice": 1.29,
+      "VariantImage": "https://example.com/images/garlic.jpg"
+    },
+    {
+      "ProductID": 5,
+      "VariantName": "Natural Almonds",
+      "VariantPrice": 8.99,
+      "VariantImage": "https://example.com/images/almonds.jpg"
+    },
+    {
+      "ProductID": 6,
+      "VariantName": "Organic Cucumbers",
+      "VariantPrice": 2.19,
+      "VariantImage": "https://example.com/images/cucumbers.jpg"
+    },
+    {
+      "ProductID": 7,
+      "VariantName": "Organic Blueberries",
+      "VariantPrice": 6.49,
+      "VariantImage": "https://example.com/images/blueberries.jpg"
+    },
+    {
+      "ProductID": 8,
+      "VariantName": "Whole Wheat Flour",
+      "VariantPrice": 3.79,
+      "VariantImage": "https://example.com/images/whole_wheat_flour.jpg"
+    },
+    {
+      "ProductID": 9,
+      "VariantName": "Organic Bell Peppers",
+      "VariantPrice": 2.99,
+      "VariantImage": "https://example.com/images/bell_peppers.jpg"
+    },
+    {
+      "ProductID": 10,
+      "VariantName": "Maple Syrup",
+      "VariantPrice": 7.99,
+      "VariantImage": "https://example.com/images/maple_syrup.jpg"
+    },
+    {
+      "ProductID": 1,
+      "VariantName": "Organic Avocado",
+      "VariantPrice": 2.99,
+      "VariantImage": "https://example.com/images/avocado.jpg"
+    },
+    {
+      "ProductID": 2,
+      "VariantName": "Whole Wheat Bread",
+      "VariantPrice": 4.49,
+      "VariantImage": "https://example.com/images/whole_wheat_bread.jpg"
+    },
+    {
+      "ProductID": 3,
+      "VariantName": "Organic Celery",
+      "VariantPrice": 1.79,
+      "VariantImage": "https://example.com/images/celery.jpg"
+    },
+    {
+      "ProductID": 4,
+      "VariantName": "Natural Greek Yogurt",
+      "VariantPrice": 3.99,
+      "VariantImage": "https://example.com/images/greek_yogurt.jpg"
+    },
+    {
+      "ProductID": 5,
+      "VariantName": "Organic Red Onions",
+      "VariantPrice": 1.99,
+      "VariantImage": "https://example.com/images/red_onions.jpg"
+    },
+    {
+      "ProductID": 6,
+      "VariantName": "Wild Rice",
+      "VariantPrice": 6.99,
+      "VariantImage": "https://example.com/images/wild_rice.jpg"
+    },
+    {
+      "ProductID": 7,
+      "VariantName": "Organic Bell Peppers",
+      "VariantPrice": 2.99,
+      "VariantImage": "https://example.com/images/bell_peppers.jpg"
+    },
+    {
+      "ProductID": 8,
+      "VariantName": "Natural Peanut Butter",
+      "VariantPrice": 3.29,
+      "VariantImage": "https://example.com/images/peanut_butter.jpg"
+    },
+    {
+      "ProductID": 9,
+      "VariantName": "Organic Strawberries",
+      "VariantPrice": 4.99,
+      "VariantImage": "https://example.com/images/strawberries.jpg"
+    },
+    {
+      "ProductID": 10,
+      "VariantName": "Organic Carrots",
+      "VariantPrice": 1.49,
+      "VariantImage": "https://example.com/images/carrots.jpg"
     }
-]
+  ]
+  
