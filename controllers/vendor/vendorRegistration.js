@@ -6,36 +6,35 @@ exports.vendorRegistration = async (req, res, next) => {
             vendor_name,
             vendor_mobile_number,
             vendor_email,
-            vendor_gst_number,
             vendor_address,
             vendor_city,
             vendor_pincode,
             vendor_state,
             vendor_country,
-            vendor_shop_pic,
+            shop_address,
+            shop_city,
+            shop_pincode,
+            shop_state,
+            shop_country,
+            shop_gst_number,
+            shop_pic,
+            shop_mobile_number,
         } = req.body
 
         const { agent_id } = req.user
 
-        
-
-        const vendor_id = Math.ceil(Math.random() * 100)
-
         const data = await db.sequelize.query(
-            'DECLARE @unique_vendor_shop_id VARCHAR(255); EXEC InsertVendor :vendor_id, :vendor_name, :vendor_mobile_number, :vendor_email, :vendor_gst_number, :vendor_address, :vendor_city, :vendor_pincode, :vendor_state, :vendor_country, :vendor_shop_pic, :agent_id, @unique_vendor_shop_id OUTPUT; SELECT @unique_vendor_shop_id as unique_vendor_shop_id;',
+            'DECLARE @unique_vendor_shop_id VARCHAR(255); EXEC InsertVendor  :vendor_name, :vendor_mobile_number, :vendor_email, :vendor_address, :vendor_city, :vendor_pincode, :vendor_state, :vendor_country, :agent_id, @unique_vendor_shop_id OUTPUT; SELECT @unique_vendor_shop_id as unique_vendor_shop_id;',
             {
                 replacements: {
-                    vendor_id: vendor_id,
                     vendor_name: vendor_name,
                     vendor_mobile_number: vendor_mobile_number,
                     vendor_email: vendor_email,
-                    vendor_gst_number: vendor_gst_number,
                     vendor_address: vendor_address,
                     vendor_city: vendor_city,
                     vendor_pincode: vendor_pincode,
                     vendor_state: vendor_state,
                     vendor_country: vendor_country,
-                    vendor_shop_pic: vendor_shop_pic,
                     agent_id: agent_id,
                 },
                 type: db.sequelize.QueryTypes.SELECT,
@@ -43,25 +42,58 @@ exports.vendorRegistration = async (req, res, next) => {
         )
 
         const vendorSuccessfullDataInserted = await db.sequelize.query(
-            'EXEC InsertVendorShopId :vendor_id, :vendor_shop_id',
+            'EXEC InsertVendorShopId :vendor_email, :vendor_shop_id',
             {
                 replacements: {
-                    vendor_id: vendor_id,
+                    vendor_email: vendor_email,
                     vendor_shop_id: data[0].unique_vendor_shop_id,
                 },
             }
         )
 
         if (vendorSuccessfullDataInserted[1] === 1) {
-            return res.status(201).json({
-                message: 'Vendor Registered Successfully',
-                vendor_shop_id: data[0].unique_vendor_shop_id,
-                success: true,
-                error: false,
-            })
+            const cityInsertedSuccesfully = await db.sequelize.query(
+                'DECLARE @result INT;EXEC InsertCity :CityName, @result OUTPUT; SELECT @result as result;',
+                {
+                    replacements: {
+                        CityName: vendor_city,
+                    },
+                }
+            )
+
+            if (
+                cityInsertedSuccesfully[0][0].result === 0 ||
+                cityInsertedSuccesfully[0][0].result === 1
+            ) {
+                const shopRegisteredSuccess = await db.sequelize.query(
+                    'DECLARE @Success INT; EXEC AddShopData @ShopID = :ShopID, @ShopAddress = :ShopAddress, @ShopCity = :ShopCity, @ShopPincode = :ShopPincode, @ShopState = :ShopState, @ShopCountry = :ShopCountry, @ShopGSTNumber = :ShopGSTNumber, @ShopPIC = :ShopPIC, @ShopMobileNumber = :ShopMobileNumber, @Success = @Success OUTPUT; SELECT @Success as Success;',
+                    {
+                        replacements: {
+                            ShopID: data[0].unique_vendor_shop_id,
+                            ShopAddress: shop_address,
+                            ShopCity: shop_city,
+                            ShopPincode: shop_pincode,
+                            ShopState: shop_state,
+                            ShopCountry: shop_country,
+                            ShopGSTNumber: shop_gst_number,
+                            ShopPIC: shop_pic,
+                            ShopMobileNumber: shop_mobile_number,
+                        },
+                        type: db.sequelize.QueryTypes.SELECT, // Add this line if using Sequelize < v5
+                    }
+                )
+                if (shopRegisteredSuccess[0].Success === 1) {
+                    return res.status(201).json({
+                        message: 'Vendor and Shop Registered Successfully',
+                        shop_id: data[0].unique_vendor_shop_id,
+                        error: false,
+                        success: true,
+                    })
+                }
+            }
         } else {
-            return res.status(400).json({
-                message: 'Something went wrong',
+            return res.status(200).json({
+                message: 'Vendor Already Exist',
             })
         }
     } catch (error) {

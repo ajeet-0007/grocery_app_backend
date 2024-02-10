@@ -1,0 +1,133 @@
+[
+    {
+        "ProductID": 1,
+        "VariantName": "Large Loaf",
+        "VariantPrice": 5.99,
+        "VariantImage": "https://example.com/images/bread1_large.jpg"
+    },
+    {
+        "ProductID": 1,
+        "VariantName": "Small Loaf",
+        "VariantPrice": 3.99,
+        "VariantImage": "https://example.com/images/bread1_small.jpg"
+    },
+    {
+        "ProductID": 2,
+
+        "VariantName": "Red Apples",
+        "VariantPrice": 2.99,
+        "VariantImage": "https://example.com/images/apples_red.jpg"
+    },
+    {
+        "ProductID": 2,
+
+        "VariantName": "Green Apples",
+        "VariantPrice": 3.49,
+        "VariantImage": "https://example.com/images/apples_green.jpg"
+    },
+    {
+        "ProductID": 3,
+
+        "VariantName": "Large Bag",
+        "VariantPrice": 4.99,
+        "VariantImage": "https://example.com/images/spinach_large.jpg"
+    },
+    {
+        "ProductID": 3,
+
+        "VariantName": "Small Bag",
+        "VariantPrice": 2.99,
+        "VariantImage": "https://example.com/images/spinach_small.jpg"
+    },
+    {
+        "ProductID": 4,
+
+        "VariantName": "Dozen",
+        "VariantPrice": 3.99,
+        "VariantImage": "https://example.com/images/eggs_dozen.jpg"
+    },
+    {
+        "ProductID": 4,
+
+        "VariantName": "Half-Dozen",
+        "VariantPrice": 2.49,
+        "VariantImage": "https://example.com/images/eggs_half_dozen.jpg"
+    },
+    {
+        "ProductID": 5,
+
+        "VariantName": "Spaghetti",
+        "VariantPrice": 2.99,
+        "VariantImage": "https://example.com/images/pasta_spaghetti.jpg"
+    },
+    {
+        "ProductID": 5,
+
+        "VariantName": "Penne",
+        "VariantPrice": 2.49,
+        "VariantImage": "https://example.com/images/pasta_penne.jpg"
+    },
+    {
+        "ProductID": 6,
+
+        "VariantName": "Gallon",
+        "VariantPrice": 4.99,
+        "VariantImage": "https://example.com/images/milk_gallon.jpg"
+    },
+    {
+        "ProductID": 6,
+
+        "VariantName": "Half-Gallon",
+        "VariantPrice": 2.99,
+        "VariantImage": "https://example.com/images/milk_half_gallon.jpg"
+    },
+    {
+        "ProductID": 7,
+
+        "VariantName": "Ribeye Steak",
+        "VariantPrice": 9.99,
+        "VariantImage": "https://example.com/images/beef_ribeye.jpg"
+    },
+    {
+        "ProductID": 7,
+
+        "VariantName": "Ground Beef",
+        "VariantPrice": 6.99,
+        "VariantImage": "https://example.com/images/beef_ground.jpg"
+    },
+    {
+        "ProductID": 8,
+
+        "VariantName": "Bunch",
+        "VariantPrice": 1.99,
+        "VariantImage": "https://example.com/images/bananas_bunch.jpg"
+    },
+    {
+        "ProductID": 9,
+
+        "VariantName": "Pound",
+        "VariantPrice": 2.49,
+        "VariantImage": "https://example.com/images/tomatoes_pound.jpg"
+    },
+    {
+        "ProductID": 9,
+
+        "VariantName": "Basket",
+        "VariantPrice": 8.99,
+        "VariantImage": "https://example.com/images/tomatoes_basket.jpg"
+    },
+    {
+        "ProductID": 10,
+
+        "VariantName": "16 oz Jar",
+        "VariantPrice": 4.99,
+        "VariantImage": "https://example.com/images/peanut_butter_16oz.jpg"
+    },
+    {
+        "ProductID": 10,
+
+        "VariantName": "32 oz Jar",
+        "VariantPrice": 8.99,
+        "VariantImage": "https://example.com/images/peanut_butter_32oz.jpg"
+    }
+]
