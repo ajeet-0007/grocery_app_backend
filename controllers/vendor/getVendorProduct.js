@@ -12,6 +12,8 @@ exports.getVendorProducts = async (req, res, next) => {
                 },
             }
         )
+
+        if(data[0].length !== 0){
          
         const groupedProducts = data[0].reduce((acc, product) => {
             const existingProduct = acc.find(p => p.ProductID === product.ProductID);
@@ -43,9 +45,18 @@ exports.getVendorProducts = async (req, res, next) => {
           }, []);
     
         return res.status(200).json({
-            groupedProducts
+            groupedProducts,
+            error: false,
+            success: true
             
         })
+    }else{
+        return res.status(200).json({
+            message: "No products exist",
+            error: false,
+            success: true
+        })
+    }
     } catch (error) {
         console.log(error)
         return res.status(500).json({
