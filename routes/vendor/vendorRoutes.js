@@ -12,7 +12,9 @@ const {authorize} = require('../../middlewares/agent/authorize')
 
 const {vendorAuthorize} = require('../../middlewares/vendor/authorize');
 
-const {getVendorProducts} = require('../../controllers/vendor/getVendorProduct')
+const {getVendorProducts} = require('../../controllers/vendor/getVendorProduct');
+
+const {getVendorProductsByCategory} = require('../../controllers/vendor/getVendorProductsByCategory')
 
 
 router.post('/registration',authorize, vendorRegistration);
@@ -22,5 +24,7 @@ router.post('/sign-up', vendorSignUp)
 router.post('/log-in', vendorLogIn)
 
 router.post('/get-vendor-products/:vendor_shop_id',vendorAuthorize, getVendorProducts );
+
+router.post('/get-vendor-products-by-category', vendorAuthorize, getVendorProductsByCategory);
 
 module.exports = router;
