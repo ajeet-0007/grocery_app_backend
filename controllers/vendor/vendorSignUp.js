@@ -47,8 +47,9 @@ exports.vendorSignUp = async (req, res, next) => {
                 getAllCategoryId[0].forEach(async (category)=>{
                             await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
                                 replacements: {
+                                    ProductID: category.id,
                                     ShopID: vendor_shop_id,
-                                    ProductID: category.id
+                                    
                                 }
                             })
                 })
