@@ -24,7 +24,7 @@ exports.vendorSignUp = async (req, res, next) => {
                         vendor_shop_id: vendor_shop_id,
                     },
                     type: db.sequelize.QueryTypes.SELECT,
-                }
+                } 
             )
 
             if (data[0].result === 1) {
@@ -42,13 +42,13 @@ exports.vendorSignUp = async (req, res, next) => {
                     }
                 )
 
-                const getAllProductId = await db.sequelize.query('EXEC GetAllProductIDs');
+                const getAllCategoryId = await db.sequelize.query('EXEC GetAllCategoryIDs');
 
-                getAllProductId[0].forEach(async (product)=>{
+                getAllCategoryId[0].forEach(async (category)=>{
                             await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
                                 replacements: {
                                     ShopID: vendor_shop_id,
-                                    ProductID: product.ProductID
+                                    ProductID: category.id
                                 }
                             })
                 })
