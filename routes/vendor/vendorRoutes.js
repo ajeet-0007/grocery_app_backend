@@ -20,6 +20,8 @@ const {getVendorProductsCategory} = require('../../controllers/vendor/getVendorP
 
 const {getVendorProductSubCategory} = require('../../controllers/vendor/getVendorProductSubCategory');
 
+const {getVendorProductBySubcategory} = require('../../controllers/vendor/getVendorProductBySubcategory')
+
 
 router.post('/registration',authorize, vendorRegistration);
 
@@ -34,5 +36,7 @@ router.post('/get-vendor-products-by-category', vendorAuthorize, getVendorProduc
 router.post('/get-products-categories/:vendor_shop_id', vendorAuthorize, getVendorProductsCategory);
 
 router.post('/get-product-subcategory', vendorAuthorize, getVendorProductSubCategory);
+
+router.post('/get-vendor-product-by-subcategory', vendorAuthorize, getVendorProductBySubcategory);
 
 module.exports = router;
