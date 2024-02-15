@@ -42,18 +42,23 @@ exports.vendorSignUp = async (req, res, next) => {
                     }
                 )
 
-                const getAllCategoryId = await db.sequelize.query('EXEC GetAllCategoryIDs');
+                const getAllProductId = await db.sequelize.query('EXEC GetAllProductIDs');
 
-                getAllCategoryId[0].forEach(async (category)=>{
+                
+
+                getAllProductId[0].forEach(async (category)=>{
+                            
                             await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
                                 replacements: {
                                     ProductID: category.id,
                                     ShopID: vendor_shop_id,
                                     
-                                }
-                            })
+                                } 
+                            }) 
                 })
 
+               
+ 
                 if(passwordUpdationforVendor[1]===1){
                     return res.status(200).json({
                         message: "Vendor SignUp SuccessFull",

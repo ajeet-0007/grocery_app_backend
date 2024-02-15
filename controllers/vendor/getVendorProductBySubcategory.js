@@ -13,7 +13,7 @@ exports.getVendorProductBySubcategory = async (req, res, next)=>{
         if(productOfSubcategory[0].length !== 0){
             return res.status(200).json({
                 productOfSubcategory,
-                error: false,
+                error: false, 
                 success: true
             })
         }else{
