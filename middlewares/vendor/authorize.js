@@ -3,18 +3,21 @@ const jwt = require('jsonwebtoken')
 
 exports.vendorAuthorize = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1]
+    const token = req.headers.authorization.split(' ')[1];
     if (!token) {
         return 'Provide token!'
     } else {
         jwt.verify(token, process.env.VENDOR_SECRET_KEY, (err, decoded) => {
             if (err) {
-                return 'Auth Error!'
-            } else {
-                req.vendor = decoded
+                return res.status(403).json({
+                    message: "Forbidden"
+                })
+            } else { 
+                req.vendor = decoded 
+                next()
             }
         })
-        next()
+        
     }
     } catch (error) {
         console.log(error);
