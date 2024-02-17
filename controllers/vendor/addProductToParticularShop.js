@@ -45,8 +45,6 @@ exports.addProductToParticularShop = async (req, res, next) => {
                 success: true
             })
         }
-
-        return res.json(productAddedToShop)
     } catch (error) {
         console.log(error);
         return res.status(500).json({
