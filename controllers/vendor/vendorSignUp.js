@@ -42,20 +42,11 @@ exports.vendorSignUp = async (req, res, next) => {
                     }
                 )
 
-                const getAllProductId = await db.sequelize.query('EXEC GetAllProductIDs');
-
-                
-
-                getAllProductId[0].forEach(async (category)=>{
-                            
-                            await db.sequelize.query("EXEC InsertShopProduct :ProductID, :ShopID", {
-                                replacements: {
-                                    ProductID: category.id,
-                                    ShopID: vendor_shop_id,
-                                    
-                                } 
-                            }) 
-                })
+              await db.sequelize.query('EXEC AddDefaultProductsToShop :shopID', {
+                    replacements: {
+                        shopID: vendor_shop_id
+                    }
+                },);
 
                
  
