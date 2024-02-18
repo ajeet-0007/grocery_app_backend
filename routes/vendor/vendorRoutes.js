@@ -23,6 +23,7 @@ const {getVendorProductSubCategory} = require('../../controllers/vendor/getVendo
 const {getVendorProductBySubcategory} = require('../../controllers/vendor/getVendorProductBySubcategory');
 const { addProductToParticularShop } = require('../../controllers/vendor/addProductToParticularShop');
 const { vendorDeleteProduct } = require('../../controllers/vendor/vendorDeleteProduct');
+const { vendorUpdateProduct } = require('../../controllers/vendor/vendorUpdateProduct');
 
 
 router.post('/registration',authorize, vendorRegistration);
@@ -44,5 +45,7 @@ router.post('/get-vendor-product-by-subcategory', vendorAuthorize, getVendorProd
 router.post('/add-product/:shop_id', vendorAuthorize, addProductToParticularShop);
 
 router.post('/delete-product-from-shop/:product_id', vendorAuthorize, vendorDeleteProduct);
+
+router.post('/update-product', vendorAuthorize, vendorUpdateProduct)
 
 module.exports = router; 
