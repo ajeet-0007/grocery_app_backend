@@ -15,7 +15,7 @@ exports.vendorLogIn = async (req, res, next) => {
         })
         if(data.length !== 0){
             const checkVendorPassword = await bcrypt.compare(vendor_password, data[0].vendor_password);
-            if(checkVendorPassword){
+            if(checkVendorPassword === true && vendor_shop_id === data[0].vendor_shop_id){
                 const vendorAccessToken = jwt.sign({vendor_shop_id: vendor_shop_id}, process.env.VENDOR_SECRET_KEY)
                 return res.status(200).json({
                     message: "Vendor Login Successfull",
