@@ -21,7 +21,7 @@ const {getVendorProductsCategory} = require('../../controllers/vendor/getVendorP
 const {getVendorProductSubCategory} = require('../../controllers/vendor/getVendorProductSubCategory');
 
 const {getVendorProductBySubcategory} = require('../../controllers/vendor/getVendorProductBySubcategory');
-const { addProductToParticularShop } = require('../../controllers/vendor/addProductToParticularShop');
+const { addProductsToParticularShop } = require('../../controllers/vendor/addProductToParticularShop');
 const { vendorDeleteProduct } = require('../../controllers/vendor/vendorDeleteProduct');
 const { vendorUpdateProduct } = require('../../controllers/vendor/vendorUpdateProduct');
 
@@ -42,7 +42,7 @@ router.post('/get-product-subcategory', vendorAuthorize, getVendorProductSubCate
 
 router.post('/get-vendor-product-by-subcategory', vendorAuthorize, getVendorProductBySubcategory);
 
-router.post('/add-product/:shop_id', vendorAuthorize, addProductToParticularShop);
+router.post('/add-product/:shop_id', vendorAuthorize, addProductsToParticularShop);
 
 router.post('/delete-product-from-shop/:product_id', vendorAuthorize, vendorDeleteProduct);
 

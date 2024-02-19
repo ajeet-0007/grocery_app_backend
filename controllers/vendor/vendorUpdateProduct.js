@@ -4,7 +4,6 @@ exports.vendorUpdateProduct = async (req, res, next) =>{
     try {
         const {vendor_shop_id} = req.vendor;
         const {product_id} = req.query;
-        const {name, price} = req.body;
         const updates = Object.keys(req.body)
             .map(key => `${key} = '${req.body[key]}'`)
             .join(', ');
