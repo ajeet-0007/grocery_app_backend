@@ -6,7 +6,7 @@ const path = require('path')
 exports.vendorSignUp = async (req, res, next) => {
     try {
         const { vendor_shop_id, vendor_password } = req.body
-
+        console.log(req.body)
         const checkVendorExistOrNot = await db.sequelize.query(
             'EXEC GetVendorPassword :vendor_shop_id',
             {
@@ -16,7 +16,8 @@ exports.vendorSignUp = async (req, res, next) => {
                 type: db.sequelize.QueryTypes.SELECT,
             }
         )
-        if (checkVendorExistOrNot[0].vendor_password === null) {
+        console.log(checkVendorExistOrNot)
+        if (checkVendorExistOrNot[0].vendor_password === null) { 
             const data = await db.sequelize.query(
                 'DECLARE @result INT; EXEC CheckVendorShopId :vendor_shop_id, @result OUTPUT; SELECT @result as result;',
                 {
@@ -42,13 +43,13 @@ exports.vendorSignUp = async (req, res, next) => {
                     }
                 )
 
-              await db.sequelize.query('EXEC AddDefaultProductsToShop :shopID', {
-                    replacements: {
-                        shopID: vendor_shop_id
-                    }
-                },);
+            //   await db.sequelize.query('EXEC AddDefaultProductsToShop :shopID', {
+            //         replacements: {
+            //             shopID: vendor_shop_id
+            //         }
+            //     },);
 
-               
+                
  
                 if(passwordUpdationforVendor[1]===1){
                     return res.status(200).json({
