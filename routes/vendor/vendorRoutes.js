@@ -42,6 +42,9 @@ const {
 const {
     vendorUpdateProduct,
 } = require('../../controllers/vendor/vendorUpdateProduct')
+const {
+    getVariantsOfProduct,
+} = require('../../controllers/vendor/getVariantsOfProduct')
 
 router.post('/registration', authorize, vendorRegistration)
 
@@ -91,8 +94,8 @@ router.post(
     vendorDeleteProduct
 )
 
-router.post('/update-product',
- vendorAuthorize,
-  vendorUpdateProduct)
+router.get('/get-variants-of-product/:product_id', vendorAuthorize, getVariantsOfProduct)
+
+router.post('/update-product', vendorAuthorize, vendorUpdateProduct)
 
 module.exports = router
