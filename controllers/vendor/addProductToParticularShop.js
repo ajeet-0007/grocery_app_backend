@@ -1,6 +1,5 @@
 // const db = require('../../config/index')
 
-
 // exports.addProductsToParticularShop = async (req, res, next) => {
 //     try {
 //         const {shop_id} = req.params;
@@ -19,14 +18,10 @@
 //             };
 //         });
 
-
-   
 //         const result = await db.sequelize.query('DECLARE @success BIT; EXEC InsertProductsFromJSON @json=:productList, @success = @success OUTPUT; SET @success = @success; Select @success as success', {
 //             replacements: { productList: JSON.stringify(productList), success: null },
 //             type: db.Sequelize.QueryTypes.SELECT
 //         });
-        
-        
 
 //         if(result[0].success){
 //         return res.status(200).json({
@@ -54,45 +49,45 @@
 
 const db = require('../../config/index')
 
-
 exports.addProductsToParticularShop = async (req, res, next) => {
     try {
-        const {shop_id} = req.params;
-        let productList = req.body;
+        const { shop_id } = req.params
+        let productList = req.body
         productList.shop_id = shop_id
 
+        const result = await db.sequelize.query(
+            'DECLARE @success INT; EXEC C @json=:productList, @success = @success OUTPUT; SET @success = @success;',
+            {
+                replacements: { productList: JSON.stringify(productList) },
+                type: db.Sequelize.QueryTypes.SELECT,
+            }
+        )
 
-   
-        const result = await db.sequelize.query('DECLARE @success BIT; EXEC C @json=:productList, @success = @success OUTPUT; SET @success = @success; Select @success as success', {
-            replacements: { productList: JSON.stringify(productList), success: null },
-            type: db.Sequelize.QueryTypes.SELECT
-        });
-        
-        
-
-        if(result[0].success){
-        return res.status(200).json({
-            message: "Product Inserted Successfully",
-            error: false,
-            success: true
-        })
-        }else{
-            return res.status(400).json({
-                message: "Some problem!",
+        if (result[0].success === 1) {
+            return res.status(200).json({
+                message: 'Product Inserted Successfully',
                 error: false,
-                success: true
+                success: true,
+            })
+        } else if (result[0].success === 2) {
+            return res.status(200).json({
+                message: 'Product Already Exist In Shop',
+                error: false,
+                success: true,
+            })
+        } else {
+            return res.status(400).json({
+                message: 'Some problem!',
+                error: false,
+                success: true,
             })
         }
-
     } catch (error) {
-        console.log(error);
+        console.log(error)
         return res.status(500).json({
             error: error.message,
             error: true,
-            success: false
+            success: false,
         })
     }
 }
-
-
-
