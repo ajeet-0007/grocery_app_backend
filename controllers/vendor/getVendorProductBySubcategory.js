@@ -1,4 +1,6 @@
 const db = require('../../config/index')
+const {getCategoryProducts} = require('../../utils/vendor/getCategoryProducts')
+
 
 exports.getVendorProductBySubcategory = async (req, res, next)=>{
     try {
@@ -11,8 +13,9 @@ exports.getVendorProductBySubcategory = async (req, res, next)=>{
         });
 
         if(productOfSubcategory[0].length !== 0){
+            const products = getCategoryProducts(productOfSubcategory[0])
             return res.status(200).json({
-                productOfSubcategory,
+                productOfSubcategory : products,
                 error: false, 
                 success: true
             })
