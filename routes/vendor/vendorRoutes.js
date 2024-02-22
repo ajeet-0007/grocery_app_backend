@@ -44,7 +44,7 @@ router.post('/get-vendor-product-by-subcategory', vendorAuthorize, getVendorProd
 
 router.post('/add-product/:shop_id', vendorAuthorize, addProductsToParticularShop);
 
-router.post('/delete-product-from-shop/:product_id', vendorAuthorize, vendorDeleteProduct);
+router.post('/delete-product-from-shop/:variant_id', vendorAuthorize, vendorDeleteProduct);
 
 router.post('/update-product', vendorAuthorize, vendorUpdateProduct)
 
