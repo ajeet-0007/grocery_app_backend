@@ -19,6 +19,8 @@ exports.vendorRegistration = async (req, res, next) => {
             shop_gst_number,
             shop_pic,
             shop_mobile_number,
+            latitude,
+            longitude
         } = req.body
 
         const { agent_id } = req.user
@@ -66,7 +68,7 @@ exports.vendorRegistration = async (req, res, next) => {
                 cityInsertedSuccesfully[0][0].result === 1
             ) {
                 const shopRegisteredSuccess = await db.sequelize.query(
-                    'DECLARE @Success INT; EXEC AddShopData @ShopID = :ShopID, @ShopAddress = :ShopAddress, @ShopCity = :ShopCity, @ShopPincode = :ShopPincode, @ShopState = :ShopState, @ShopCountry = :ShopCountry, @ShopGSTNumber = :ShopGSTNumber, @ShopPIC = :ShopPIC, @ShopMobileNumber = :ShopMobileNumber, @Success = @Success OUTPUT; SELECT @Success as Success;',
+                    'DECLARE @Success INT; EXEC AddShopData @ShopID = :ShopID, @ShopAddress = :ShopAddress, @ShopCity = :ShopCity, @ShopPincode = :ShopPincode, @ShopState = :ShopState, @ShopCountry = :ShopCountry, @ShopGSTNumber = :ShopGSTNumber, @ShopPIC = :ShopPIC, @ShopMobileNumber = :ShopMobileNumber, @Latitude= :Latitude,@Longitude= :Longitude, @Success = @Success OUTPUT; SELECT @Success as Success;',
                     {
                         replacements: {
                             ShopID: data[0].unique_vendor_shop_id,
@@ -78,6 +80,8 @@ exports.vendorRegistration = async (req, res, next) => {
                             ShopGSTNumber: shop_gst_number,
                             ShopPIC: shop_pic,
                             ShopMobileNumber: shop_mobile_number,
+                            Latitude: latitude,
+                            Longitude: longitude
                         },
                         type: db.sequelize.QueryTypes.SELECT, // Add this line if using Sequelize < v5
                     }
