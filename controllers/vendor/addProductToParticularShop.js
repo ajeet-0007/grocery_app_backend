@@ -62,22 +62,21 @@ exports.addProductsToParticularShop = async (req, res, next) => {
                 type: db.Sequelize.QueryTypes.SELECT,
             }
         )
-
         if (result[0].success === 1) {
             return res.status(200).json({
                 message: 'Product Inserted Successfully',
                 error: false,
-                success: true,
+                success: true, 
             })
         } else if (result[0].success === 2) {
             return res.status(200).json({
-                message: 'Product Already Exist In Shop',
+                message: 'Product Inserted Successfully',
                 error: false,
-                success: true,
+                success: true, 
             })
         } else {
-            return res.status(400).json({
-                message: 'Some problem!',
+            return res.status(200).json({
+                message: 'Product already exist in Shop',
                 error: false,
                 success: true,
             })
