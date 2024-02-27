@@ -18,7 +18,7 @@ exports.vendorDeleteProduct = async (req, res, next) => {
                 error: false,
             })
         } else {
-            return res.status(400).json({
+            return res.status(200).json({
                 message: 'product does not exist',
                 success: true,
                 error: false,
